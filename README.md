@@ -10,3 +10,29 @@ The major diseases which were being investigated were early blight and late blig
 Model inference was also evaluated noting parameters such as latency.  
 Hardware considerations were taken into account to reduce latencies during inference\
 
+project-root/
+│
+├── data/
+│   ├── raw/                # Original, unchanged data
+│   ├── processed/          # Cleaned, resized, or augmented data
+│   │   ├── train/
+│   │   │   ├── class_a/    # Images/files of class A
+│   │   │   └── class_b/    # Images/files of class B
+│   │   ├── val/
+│   │   │   ├── class_a/
+│   │   │   └── class_b/
+│   │   └── test/           # Optional: For final evaluation
+│   │       ├── class_a/
+│   │       └── class_b/
+│
+├── notebooks/              # Jupyter notebooks for EDA and prototyping
+│
+├── src/                    # Source code for the project
+│   ├── data_prep.py        # Scripts to clean/split data
+│   ├── train.py            # Training pipeline
+│   └── predict.py          # Inference script
+│
+├── models/                 # Saved model weights (.pth, .h5, etc.)
+│
+├── requirements.txt        # Python dependencies
+└── README.md               # Project description
