@@ -1,0 +1,23 @@
+#Dataset Paths
+train: "data/train"
+val: "data/val"
+img_size:224
+batch_size: 32
+
+#Model configuration
+base_model: "MobileNet3Large"
+weights: "imagenet"
+num_classes: 2
+dropout_rate: 0.2
+
+
+#transfer learning hyperparameters
+epoch_initial : 10
+epochs_fine_tune: 20
+learning_rate: 0.001
+fine_tune_lr: 0.0001
+val_split: 0.2
+
+#class names 
+-"early blight"
+-"late blight"
