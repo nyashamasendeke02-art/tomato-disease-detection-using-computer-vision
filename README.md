@@ -8,7 +8,7 @@ The model was tested on real tomato leaves in an experimental tomato garden with
 The models confidence score/ predictions were not that far off.  
 The major diseases which were being investigated were early blight and late blight.  
 Model inference was also evaluated noting parameters such as latency.  
-Hardware considerations were taken into account to reduce latencies during inference\
+Hardware considerations were taken into account to reduce latencies during inference
 
 project-root/
 │
@@ -28,11 +28,39 @@ project-root/
 ├── notebooks/              # Jupyter notebooks for EDA and prototyping
 │
 ├── src/                    # Source code for the project
-│   ├── data_prep.py        # Scripts to clean/split data
+│   ├── __init__.py         # Make src a Python module
+│   ├── data/               # Data handling utilities and preprocessing
+│   │   ├── __init__.py
+│   │   └── preprocessing.py
+│   ├── models/             # Model definitions
+│   │   ├── __init__.py
+│   │   └── model.py
+│   ├── utils/              # Utility functions (logging, metrics, etc.)
+│   │   ├── __init__.py
+│   │   └── logger.py
 │   ├── train.py            # Training pipeline
 │   └── predict.py          # Inference script
 │
 ├── models/                 # Saved model weights (.pth, .h5, etc.)
 │
+├── tests/                  # Unit and integration tests
+│   ├── test_data.py
+│   └── test_models.py
+│
+├── docs/                   # Documentation files (Markdown, configuration for Sphinx, etc.)
+│   └── index.md
+│
+├── scripts/                # Utility scripts (e.g., data download, environment setup)
+│   ├── download_data.sh
+│   └── setup_environment.sh
+│
+├── configs/                # Configuration files (YAML, JSON, etc.)
+│   └── default.yaml
+│
+├── .gitignore              # Ignore files not to be committed
 ├── requirements.txt        # Python dependencies
+├── environment.yml         # Conda environment (optional)
+├── Dockerfile              # Dockerfile for containerization
+├── setup.py                # Setup script for packaging (if needed)
+├── LICENSE                 # License file
 └── README.md               # Project description

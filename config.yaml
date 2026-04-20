@@ -1,23 +1,50 @@
-#Dataset Paths
-train: "data/train"
-val: "data/val"
-img_size:224
-batch_size: 32
+# ----------------------
+# Dataset Configuration
+# ----------------------
+dataset:
+  train: "data/train"
+  val: "data/val"
+  img_size: 192  # Reduced from 224 to improve RAM usage
+  batch_size: 8   # Reduced from 32 to fit Raspberry Pi memory
+  # Add data loading optimizations
+  prefetch_buffer: 2
+  num_parallel_calls: 2
+  augmentation:
+    # Simplified for CPU efficiency
+    rotation_range: 10
+    zoom_range: 0.1
+    horizontal_flip: true
 
-#Model configuration
-base_model: "MobileNet3Large"
-weights: "imagenet"
-num_classes: 2
-dropout_rate: 0.2
+# ----------------------
+# Model Configuration
+# ----------------------
+model:
+  base_model: "MobileNet3Large"
+  weights: "imagenet"
+  num_classes: 2
+  dropout_rate: 0.1  # Reduced from 0.2 for smaller model
 
+# ----------------------
+# Training Configuration
+# ----------------------
+training:
+  initial_training:
+    epochs: 5      # Reduced from 10 for faster iterations
+    learning_rate: 0.0005
+  fine_tuning:
+    epochs: 10     # Reduced from 20
+    learning_rate: 0.00005
+  optimizer: "Adam"
+  scheduler: "ReduceLROnPlateau"
+  val_split: 0.2
+  random_seed: 42
+  # Pi-specific optimizations
+  use_cpu: true
+  model_summary: true
 
-#transfer learning hyperparameters
-epoch_initial : 10
-epochs_fine_tune: 20
-learning_rate: 0.001
-fine_tune_lr: 0.0001
-val_split: 0.2
-
-#class names 
--"early blight"
--"late blight"
+# ----------------------
+# Classes Configuration
+# ----------------------
+classes:
+  - "early blight"
+  - "late blight"
